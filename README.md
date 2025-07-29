@@ -1,8 +1,6 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/kopfrechner-gitlab-mr-mcp-badge.png)](https://mseep.ai/app/kopfrechner-gitlab-mr-mcp)
-
-[![GitHub stars](https://img.shields.io/github/stars/kopfrechner/gitlab-mr-mcp?style=flat)](https://github.com/kopfrechner/gitlab-mr-mcp/stargazers)
-[![License](https://img.shields.io/github/license/kopfrechner/gitlab-mr-mcp)](LICENSE)
-[![smithery badge](https://smithery.ai/badge/@kopfrechner/gitlab-mr-mcp)](https://smithery.ai/server/@kopfrechner/gitlab-mr-mcp)
+[![GitHub stars](https://img.shields.io/github/stars/kevinlin/gitlab-mr-mcp?style=flat)](https://github.com/kevinlin/gitlab-mr-mcp/stargazers)
+[![License](https://img.shields.io/github/license/kevinlin/gitlab-mr-mcp)](LICENSE)
+[![smithery badge](https://smithery.ai/badge/@kevinlin/gitlab-mr-mcp)](https://smithery.ai/server/@kevinlin/gitlab-mr-mcp)
 
 # 🚀 GitLab MR MCP
 
@@ -21,14 +19,6 @@ This project implements a server using the Model Context Protocol (MCP) that all
 - Setting merge request title and description
 
 ## 📦 Installation
-
-### ⚡ Using Smithery
-
-To install GitLab MR MCP for Claude Desktop automatically via Smithery:
-
-```bash
-npx -y @smithery/cli@latest install @kopfrechner/gitlab-mr-mcp --client claude --config '"{\"gitlabMrMcpToken\":\"YOUR_GITLAB_TOKEN\", \"gitlabMrMcpHost\": \"YOUR_GITLAB_HOST\"}"'
-```
 
 ### 🛠️ Manual Installation
 
