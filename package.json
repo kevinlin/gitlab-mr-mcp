@@ -2,6 +2,9 @@
     "name": "gitlab-mr-mcp",
     "version": "0.1.0",
     "type": "module",
+    "bin": {
+        "gitlab-mr-mcp": "./index.js"
+    },
     "dependencies": {
         "@gitbeaker/rest": "^43.3.0",
         "@modelcontextprotocol/sdk": "^1.15.1",
