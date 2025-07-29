@@ -20,6 +20,35 @@ This project implements a server using the Model Context Protocol (MCP) that all
 
 ## 📦 Installation
 
+### 🚀 Using npx (Recommended)
+
+You can run this package directly using npx without installation:
+
+```bash
+# Set environment variables
+export MR_MCP_GITLAB_HOST="your_gitlab_host"
+export MR_MCP_GITLAB_TOKEN="your_gitlab_token"
+
+# Run with npx
+npx gitlab-mr-mcp@0.1.0
+```
+
+For MCP client configuration when using npx:
+```json
+{
+  "mcpServers": {
+    "gitlab-mr-mcp": {
+      "command": "npx",
+      "args": ["gitlab-mr-mcp@0.1.0"],
+      "env": {
+        "MR_MCP_GITLAB_HOST": "your_gitlab_host",
+        "MR_MCP_GITLAB_TOKEN": "your_gitlab_token"
+      }
+    }
+  }
+}
+```
+
 ### 🛠️ Manual Installation
 
 #### 🔧 Prerequisites
@@ -45,8 +74,8 @@ npm install
       "command": "node",
       "args": ["/path/to/gitlab-mr-mcp/index.js"],
       "env": {
-        "MR_MCP_GITLAB_TOKEN": "your_gitlab_token",
-        "MR_MCP_GITLAB_HOST": "your_gitlab_host"
+        "MR_MCP_GITLAB_HOST": "your_gitlab_host",
+        "MR_MCP_GITLAB_TOKEN": "your_gitlab_token"
       }
     }
   }
