@@ -78,3 +78,6 @@ junit.xml
 .npm/
 .eslintcache
 .parcel-cache/
+
+# Smithery
+.smithery/

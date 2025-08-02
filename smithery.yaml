@@ -19,7 +19,7 @@ startCommand:
     (config) => ({
       command: 'node',
       args: [
-        'index.js'
+        'dist/index.js'
       ],
       env: {
         MR_MCP_GITLAB_TOKEN: config.gitlabMrMcpToken,
