@@ -1,12 +1,12 @@
 {
     "name": "gitlab-mr-mcp",
-    "version": "1.1.0",
+    "version": "1.1.2",
     "type": "module",
     "bin": {
-        "gitlab-mr-mcp": "dist/index.js"
+        "gitlab-mr-mcp": "./dist/index.js"
     },
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist/**/*"
     ],
