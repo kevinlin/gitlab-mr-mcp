@@ -483,16 +483,8 @@ async function main(): Promise<void> {
   }
 }
 
-// Smithery-compatible export
-export default function({ sessionId, config }: { sessionId?: string; config?: any }) {
-  return createServer();
-}
-
-// Always run main when this file is executed directly (for bin scripts)
-// Check if this module is being run directly
-if (typeof require !== 'undefined' && require.main === module) {
-  main().catch((error) => {
-    console.error("Server error:", error);
-    process.exit(1);
-  });
-}
+// Always run main when this file is executed (for bin scripts)
+main().catch((error) => {
+  console.error("Server error:", error);
+  process.exit(1);
+});
