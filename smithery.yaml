@@ -1,23 +1,15 @@
-startCommand:
-  type: stdio
-  configSchema:
-    type: object
-    required:
-      - gitlabMrMcpToken
-      - gitlabMrMcpHost
-    properties:
-      gitlabMrMcpToken:
-        type: string
-        description: GitLab Access Token
-      gitlabMrMcpHost:
-        type: string
-        description: GitLab Instance Host (e.g. gitlab.com)
-  commandFunction: |
-    (config) => ({
-      command: 'node',
-      args: ['dist/index.js'],
-      env: {
-        MR_MCP_GITLAB_TOKEN: config.gitlabMrMcpToken,
-        MR_MCP_GITLAB_HOST: config.gitlabMrMcpHost
-      }
-    })
+runtime: "typescript"
+env:
+  NODE_ENV: "production"
+configSchema:
+  type: object
+  required:
+    - gitlabMrMcpToken
+    - gitlabMrMcpHost
+  properties:
+    gitlabMrMcpToken:
+      type: string
+      description: GitLab Access Token
+    gitlabMrMcpHost:
+      type: string
+      description: GitLab Instance Host (e.g. gitlab.com)
