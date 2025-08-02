@@ -1,9 +1,11 @@
 # AGENTS.md - GitLab MR MCP Server
 
 ## Build/Test Commands
-- **Start**: `npm start` or `node index.js`
+- **Build**: `npm run build` - Compile TypeScript to JavaScript
+- **Start**: `npm start` - Run compiled JavaScript from dist/
+- **Dev**: `npm run dev` - Build and run in one command
+- **Typecheck**: `npm run typecheck` - Type check without emitting files
 - **Test with Inspector**: `npx -y @modelcontextprotocol/inspector npm start`
-- **No tests/lint defined** - this is a simple MCP server
 
 ## Environment Variables
 - `MR_MCP_GITLAB_TOKEN` (required) - GitLab API token with api/read_api scopes
@@ -11,13 +13,13 @@
 - `MR_MCP_MIN_ACCESS_LEVEL` (optional) - Minimum project access level filter
 - `MR_MCP_PROJECT_SEARCH_TERM` (optional) - Project search term filter
 
-## Code Style Guidelines
-- **Module system**: ES modules (`"type": "module"` in package.json)
-- **Imports**: Use explicit file extensions (`.js`)
-- **Naming**: camelCase for variables/functions, snake_case for API parameters
-- **Error handling**: Use try/catch with `formatErrorResponse()` helper
-- **Async/await**: Preferred over promises
-- **Logging**: Use `console.error()` with `[MCP]` prefix for debugging
-- **API responses**: Return `{ content: [{ type: "text", text: "..." }] }` format
-- **Validation**: Use Zod schemas for input validation where needed
-- **Filtering**: Provide `verbose` parameter for detailed vs filtered responses
+## TypeScript Code Style Guidelines
+- **Strict TypeScript**: Enabled with exactOptionalPropertyTypes and noUncheckedIndexedAccess
+- **Interfaces vs Types**: Use interfaces for object definitions, types for unions/mapped types
+- **Naming**: PascalCase for types/interfaces, camelCase for variables/functions
+- **Imports**: Use explicit file extensions (`.js` for compiled output)
+- **Error handling**: Typed errors with custom error types and `formatErrorResponse()` helper
+- **Immutability**: Use `readonly` for immutable properties and parameters
+- **Type safety**: Avoid `any`, prefer `unknown` for unknown types
+- **API responses**: Strictly typed `MCPResponse` interface
+- **Validation**: Zod schemas with TypeScript integration for runtime type checking

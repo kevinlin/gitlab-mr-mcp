@@ -3,15 +3,30 @@
     "version": "1.0.0",
     "type": "module",
     "bin": {
-        "gitlab-mr-mcp": "./index.js"
+        "gitlab-mr-mcp": "./dist/index.js"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist/**/*"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "dev": "tsc && node dist/index.js",
+        "clean": "rm -rf dist",
+        "typecheck": "tsc --noEmit",
+        "prepublishOnly": "npm run build"
     },
     "dependencies": {
         "@gitbeaker/rest": "^43.3.0",
         "@modelcontextprotocol/sdk": "^1.15.1",
         "lodash": "^4.17.21",
-        "zod": "^4.0.5"
+        "zod": "^3.23.8"
     },
-    "scripts": {
-        "start": "node index.js"
+    "devDependencies": {
+        "@types/lodash": "^4.17.13",
+        "@types/node": "^20.11.0",
+        "typescript": "^5.3.0"
     }
 }
