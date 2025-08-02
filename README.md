@@ -4,7 +4,7 @@
 
 # 🚀 GitLab MR MCP
 
-A Model Context Protocol (MCP) server for interacting with GitLab merge requests and issues.
+An MCP server that enables AI agents to seamlessly interact with GitLab repositories, manage merge requests, review code, and post comments directly from your AI assistant.
 
 ## 📌 Overview
 
@@ -139,17 +139,15 @@ npx -y @modelcontextprotocol/inspector npm start
 
 ## 🛠️ Troubleshooting
 
-If you encounter permissions issues (403 Forbidden), check:
+If you encounter issues with the GitLab MR MCP server:
 
-1. Your GitLab token has the proper scopes (api, read_api)
-2. The token user has proper access to the projects
-3. The project IDs are correct
+1. **Check MCP client logs first** - Enable debug logging in your MCP client to see detailed error messages and connection status. This will help identify if the issue is with the server connection, authentication, or specific tool calls.
+
+2. If you encounter permissions issues (403 Forbidden), check:
+   - Your GitLab token has the proper scopes (api, read_api)
+   - The token user has proper access to the projects
+   - The project IDs are correct
 
 ## 📜 License
 
 [MIT](LICENSE)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
