@@ -1,31 +1,23 @@
-# Smithery.ai configuration
 startCommand:
   type: stdio
   configSchema:
     type: object
-    required: 
+    required:
       - gitlabMrMcpToken
       - gitlabMrMcpHost
-    properties: 
-      gitlabMrMcpToken: 
+    properties:
+      gitlabMrMcpToken:
         type: string
         description: GitLab Access Token
       gitlabMrMcpHost:
         type: string
         description: GitLab Instance Host (e.g. gitlab.com)
-  commandFunction:
-    # A function that produces the CLI command to start the MCP on stdio.
-    |-
+  commandFunction: |
     (config) => ({
       command: 'node',
-      args: [
-        'dist/index.js'
-      ],
+      args: ['dist/index.js'],
       env: {
         MR_MCP_GITLAB_TOKEN: config.gitlabMrMcpToken,
         MR_MCP_GITLAB_HOST: config.gitlabMrMcpHost
       }
     })
-runtime: "typescript"
-env:
-  NODE_ENV: "production"
