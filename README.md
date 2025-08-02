@@ -20,6 +20,14 @@ This project implements a server using the Model Context Protocol (MCP) that all
 
 ## 📦 Installation
 
+### Installing via Smithery
+
+To install GitLab Merge Request Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@kevinlin/gitlab-mr-mcp):
+
+```bash
+npx -y @smithery/cli install @kevinlin/gitlab-mr-mcp --client claude
+```
+
 ### 🚀 Using npx (Recommended)
 
 You can run this package directly using npx without installation:
