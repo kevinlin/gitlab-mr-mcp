@@ -32,7 +32,7 @@ const config: EnvironmentConfig = {
 };
 
 // Create GitLab API instance with proper options
-const gitlabOptions = config.gitlabHost 
+const gitlabOptions = config.gitlabHost
   ? { host: config.gitlabHost, token: config.gitlabToken }
   : { token: config.gitlabToken };
 
@@ -263,7 +263,7 @@ async function getProjects(args: ToolHandlerArgs): Promise<MCPResponse> {
     ...(config.minAccessLevel ? { minAccessLevel: parseInt(config.minAccessLevel, 10) } : {}),
     ...(config.projectSearchTerm ? { search: config.projectSearchTerm } : {}),
   };
-  
+
   const projects = await api.Projects.all({ membership: true, ...projectFilter });
   const filteredProjects = verbose ? projects : projects.map((project): FilteredProject => ({
     id: project.id as number,
@@ -271,14 +271,14 @@ async function getProjects(args: ToolHandlerArgs): Promise<MCPResponse> {
     name: project.name as string,
     path: project.path as string,
     path_with_namespace: project.path_with_namespace as string,
-    web_url: project.web_url as string, 
+    web_url: project.web_url as string,
     default_branch: project.default_branch as string,
   }));
 
   const projectsText = Array.isArray(filteredProjects) && filteredProjects.length > 0
     ? JSON.stringify(filteredProjects, null, 2)
     : "No projects found.";
-  
+
   return {
     content: [{ type: "text", text: projectsText }],
   };
@@ -300,7 +300,7 @@ async function listOpenMergeRequests(args: ToolHandlerArgs): Promise<MCPResponse
     state: mr.state as string,
     web_url: mr.web_url as string,
   }));
-  
+
   return {
     content: [{ type: "text", text: JSON.stringify(filteredMergeRequests, null, 2) }],
   };
@@ -324,7 +324,7 @@ async function getMergeRequestDetails(args: ToolHandlerArgs): Promise<MCPRespons
     detailed_merge_status: mr.detailed_merge_status as string,
     diff_refs: mr.diff_refs,
   } satisfies FilteredMergeRequestDetails;
-  
+
   return {
     content: [{ type: "text", text: JSON.stringify(filteredMr, null, 2) }],
   };
@@ -337,13 +337,13 @@ async function getMergeRequestComments(args: ToolHandlerArgs): Promise<MCPRespon
   }
 
   const discussions = await api.MergeRequestDiscussions.all(project_id, merge_request_iid);
-  
+
   if (verbose) {
     return {
       content: [{ type: "text", text: JSON.stringify(discussions, null, 2) }],
     };
   }
-  
+
   const unresolvedNotes = discussions.flatMap(note => note.notes as unknown[]).filter((note: any) => note.resolved === false);
   const disscussionNotes: FilteredDiscussionNote[] = unresolvedNotes.filter((note: any) => note.type === "DiscussionNote").map((note: any) => ({
     id: note.id as number,
@@ -358,12 +358,12 @@ async function getMergeRequestComments(args: ToolHandlerArgs): Promise<MCPRespon
     author_name: note.author?.name as string,
     position: note.position,
   }));
-  
-  const filteredComments: FilteredComments = { 
+
+  const filteredComments: FilteredComments = {
     disscussionNotes,
     diffNotes
   };
-  
+
   return {
     content: [{ type: "text", text: JSON.stringify(filteredComments, null, 2) }],
   };
@@ -380,23 +380,23 @@ async function addMergeRequestComment({ project_id, merge_request_iid, comment }
   };
 }
 
-async function addMergeRequestDiffComment({ 
-  project_id, 
-  merge_request_iid, 
-  comment, 
-  base_sha, 
-  start_sha, 
-  head_sha, 
-  file_path, 
-  line_number 
+async function addMergeRequestDiffComment({
+  project_id,
+  merge_request_iid,
+  comment,
+  base_sha,
+  start_sha,
+  head_sha,
+  file_path,
+  line_number
 }: ToolHandlerArgs): Promise<MCPResponse> {
   if (!project_id || !merge_request_iid || !comment || !base_sha || !start_sha || !head_sha || !file_path || !line_number) {
     throw new Error("project_id, merge_request_iid, comment, base_sha, start_sha, head_sha, file_path, and line_number are required");
   }
 
   const discussion = await api.MergeRequestDiscussions.create(
-    project_id, 
-    merge_request_iid, 
+    project_id,
+    merge_request_iid,
     comment,
     {
       position: {
@@ -410,7 +410,7 @@ async function addMergeRequestDiffComment({
       },
     }
   );
-  
+
   return {
     content: [{ type: "text", text: JSON.stringify(discussion, null, 2) }],
   };
@@ -425,7 +425,7 @@ async function getMergeRequestDiff({ project_id, merge_request_iid }: ToolHandle
   const diffText = Array.isArray(diff) && diff.length > 0
     ? JSON.stringify(diff, null, 2)
     : "No diff data available for this merge request.";
-  
+
   return {
     content: [{ type: "text", text: diffText }],
   };
