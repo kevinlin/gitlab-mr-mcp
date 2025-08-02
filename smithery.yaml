@@ -26,3 +26,6 @@ startCommand:
         MR_MCP_GITLAB_HOST: config.gitlabMrMcpHost
       }
     })
+runtime: "typescript"
+env:
+  NODE_ENV: "production"
